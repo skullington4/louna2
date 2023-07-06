@@ -4,6 +4,6 @@ export default function Home() {
   
 
   return (
-    <h1>Louna</h1>
+    <div>This is the Homepage</div>
         )
   }

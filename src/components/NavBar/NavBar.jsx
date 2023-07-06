@@ -6,9 +6,13 @@ export default function NavBar({}) {
 
   return (
     <nav>
-      <Link to="/">Home</Link>
+      <Link to="/">Louna</Link>
       &nbsp; | &nbsp;
-      <Link to="/Mens">Mens</Link>
+      <Link to="/Collections">Collections</Link>
+      &nbsp; | &nbsp;
+      <Link to="/About">About</Link>
+      &nbsp; | &nbsp;
+      <Link to="/Contact">Contact</Link>
     </nav>
   );
 }
