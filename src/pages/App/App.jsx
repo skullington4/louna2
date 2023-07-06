@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
-import Mens from '../Mens/Mens';
-import Womens from '../Womens/Womens';
-
+import Collections from '../Collections/Collections';
+import Contact from '../Contact/Contact';
+import About from '../About/About';
+import Add from '../Add/Add';
 import './App.css';
 
 
@@ -15,8 +16,10 @@ export default function App() {
         <>
           <NavBar />
           <Routes>
-              <Route path="/Mens" element={<Mens />} />
-              <Route path="/Womens" element={<Womens />} />
+              <Route path="/Collections" element={<Collections />} />
+              <Route path="/About" element={<About />} />
+              <Route path="/Contact" element={<Contact />} />
+              <Route path="/Add" element={<Add />} />
             
             
           </Routes>

@@ -13,6 +13,8 @@ export default function NavBar({}) {
       <Link to="/About">About</Link>
       &nbsp; | &nbsp;
       <Link to="/Contact">Contact</Link>
+      &nbsp; | &nbsp;
+      <Link to="/Add">Add</Link>
     </nav>
   );
 }
