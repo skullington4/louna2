@@ -7,6 +7,9 @@ require('dotenv').config();
 // Connect to the database
 require('./config/database');
 
+
+
+
 const app = express();
 
 app.use(logger('dev'));
@@ -22,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 const port = process.env.PORT || 3001;
 
 // Put API routes here, before the "catch all" route
+app.use('/api/items', require('./routes/api/items'));
 
 
 // The following "catch all" route (note the *) is necessary
@@ -33,3 +37,6 @@ app.get('/*', function(req, res) {
 app.listen(port, function() {
   console.log(`Express app running on port ${port}`);
 });
+
+
+

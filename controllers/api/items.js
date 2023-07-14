@@ -11,9 +11,13 @@ module.exports = {
 
 async function create(req, res) {
   try{
+    console.log(req.body)
+    console.log(req.body.title)
     const createdItem = await Item.create(req.body);
     res.json(createdItem);
+
   }  catch(err) {
     res.status(400).json(err);
+    console.log(err)
     } 
 }

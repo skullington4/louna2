@@ -1,4 +1,5 @@
 import AddItemForm from '../../components/AddItemForm/AddItemForm';
+import ImageUpload from '../../components/AddSecondItemForm/AddSecondItemForm';
 
 import AWS from 'aws-sdk';
 import { PrismaClient } from '@prisma/client';
@@ -34,6 +35,7 @@ export default function Add() {
         <h2>This is the Add page</h2>
         <AddItemForm />
 
+        <ImageUpload />
 
       </>
     );
