@@ -1,4 +1,4 @@
-import * as itemsAPI from './items-api';
+import * as itemsAPI from './items-api.js';
 
 
 

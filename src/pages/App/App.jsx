@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import Collections from '../Collections/Collections';
@@ -6,7 +5,6 @@ import Contact from '../Contact/Contact';
 import About from '../About/About';
 import Add from '../Add/Add';
 import './App.css';
-
 
 
 export default function App() {

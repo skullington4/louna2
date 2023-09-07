@@ -20,15 +20,6 @@ export default function AddItemForm() {
         evt.preventDefault();
         const newFullItem = await itemsService.createItem(fullItem)
 
-      //   axios.post('/api/items', fullItem)
-      // .then(response => {
-      //   // Handle the response (e.g., show success message, update UI, etc.)
-      //   console.log('Item uploaded successfully:', response.data);
-      //   })
-      // .catch(error => {
-      //   // Handle errors (e.g., show error message, etc.)
-      //   console.error('Error uploading item:', error);
-      //   });
       };
 
 

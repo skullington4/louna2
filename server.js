@@ -1,42 +1,63 @@
-const express = require('express');
-const path = require('path');
-const favicon = require('serve-favicon');
-const logger = require('morgan');
-// Always require and configure near the top
-require('dotenv').config();
-// Connect to the database
-require('./config/database');
+import express from 'express'
+
+import multer from 'multer'
+import sharp from 'sharp'
+import crypto from 'crypto'
+
+import { PrismaClient } from '@prisma/client'
+import { uploadFile, deleteFile, getObjectSignedUrl } from './s3.js'
+
+const app = express()
+const prisma = new PrismaClient()
+
+const storage = multer.memoryStorage()
+const upload = multer({ storage: storage })
+
+const generateFileName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex')
+
+app.get("/api/items", async (req, res) => {
+  const items = await prisma.items.findMany()
+
+  for (let item of items) {
+    item.imageUrl = await getObjectSignedUrl(item.imageName)
+  }
+  res.send(items)
+})
 
 
+app.post('/api/items', upload.single('image'), async (req, res) => {
+  const file = req.file
+  const title = req.body.title
+  const description = req.body.description
+  const imageName = generateFileName()
+
+  const fileBuffer = await sharp(file.buffer)
+    .resize({ height: 1920, width: 1080, fit: "contain" })
+    .toBuffer()
+
+  await uploadFile(fileBuffer, imageName, file.mimetype)
+
+  const item = await prisma.items.create({
+    data: {
+      title,
+      description,
+      imageName
+    }
+  })
+  
+  res.status(201).send(item)
 
 
-const app = express();
+})
 
-app.use(logger('dev'));
-app.use(express.json());
+app.delete("/api/items/:id", async (req, res) => {
+  const id = +req.params.id
+  const post = await prisma.posts.findUnique({where: {id}}) 
 
-// Configure both serve-favicon & static middleware
-// to serve from the production 'build' folder
-app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
-app.use(express.static(path.join(__dirname, 'build')));
+  await deleteFile(post.imageName)
 
+  await prisma.posts.delete({where: {id: post.id}})
+  res.send(post)
+})
 
-
-const port = process.env.PORT || 3001;
-
-// Put API routes here, before the "catch all" route
-app.use('/api/items', require('./routes/api/items'));
-
-
-// The following "catch all" route (note the *) is necessary
-// to return the index.html on all non-AJAX/API requests
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
-app.listen(port, function() {
-  console.log(`Express app running on port ${port}`);
-});
-
-
-
+app.listen(3001, () => console.log("listening on port 3001"))
