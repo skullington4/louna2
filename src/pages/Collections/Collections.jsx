@@ -16,7 +16,6 @@ let navigate = useNavigate();
 useEffect(() => {
   async function getItems() {
     const result = await axios.get("/api/items")
-    console.log(items)
     setItems(result.data)
   }
   getItems()

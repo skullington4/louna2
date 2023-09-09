@@ -11,6 +11,7 @@ module.exports = {
 
 async function create(req, res) {
   try{
+    console.log("YOU MADE IT HERE")
     console.log(req.body)
     console.log(req.body.title)
     const createdItem = await Collection.create(req.body);

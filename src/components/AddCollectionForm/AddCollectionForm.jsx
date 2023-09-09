@@ -3,11 +3,10 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 
-export default function AddCollectionForm() {  
+export default function AddCollectionsForm() {  
 
   const [file, setFile] = useState()
   const [title, setTitle] = useState("")
-  const [description, setDescription] = useState("")
 
   const navigate = useNavigate()
 
@@ -15,11 +14,12 @@ export default function AddCollectionForm() {
     event.preventDefault()
 
     const formData = new FormData();
+    formData.append("image", file)
     formData.append("title", title)
 
-    await axios.post("/api/items", formData, { headers: {'Content-Type': 'multipart/form-data'}})
+    await axios.post("/api/collections", formData, { headers: {'Content-Type': 'multipart/form-data'}})
 
-    navigate("/Collections")
+    navigate("/")
   }
 
   const fileSelected = event => {
@@ -32,6 +32,7 @@ export default function AddCollectionForm() {
 
         <form onSubmit={submit} style={{width:650}} className="flex flex-col space-y-5 px-5 py-14">
           <input value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder='Title'></input>
+          <input onChange={fileSelected} type="file" accept="image/*"></input>
           <button type="submit">Submit</button>
         </form>
 

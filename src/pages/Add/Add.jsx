@@ -1,5 +1,5 @@
 import AddItemForm from '../../components/AddItemForm/AddItemForm';
-
+import AddCollectionForm from '../../components/AddCollectionForm/AddCollectionForm';
 
 
 export default function Add() {
@@ -14,7 +14,8 @@ export default function Add() {
 
 
         <AddItemForm />
-        
+
+        <AddCollectionForm />
 
       </>
     );

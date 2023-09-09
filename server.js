@@ -60,4 +60,29 @@ app.delete("/api/items/:id", async (req, res) => {
   res.send(post)
 })
 
+
+app.post('/api/collections', upload.single('image'), async (req, res) => {
+  const file = req.file
+  const title = req.body.title
+  const imageName = generateFileName()
+
+  const fileBuffer = await sharp(file.buffer)
+    .resize({ height: 1920, width: 1080, fit: "contain" })
+    .toBuffer()
+
+  await uploadFile(fileBuffer, imageName, file.mimetype)
+
+  const collection = await prisma.collections.create({
+    data: {
+      title,
+      imageName
+    }
+  })
+
+  res.status(201).send(collection)
+
+
+})
+
+
 app.listen(3001, () => console.log("listening on port 3001"))
