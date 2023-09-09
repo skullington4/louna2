@@ -24,7 +24,7 @@ useEffect(() => {
     return (
       <>
           <h1>Collections</h1>
-          <div className="singleItem">
+          <div className="singleItems">
             {items.map(item => (
               <SingleItem  item={item} />
             ))}
