@@ -17,3 +17,7 @@ model Items {
   description   String
 }
 
+model Collections {
+  id            String  @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+}

@@ -1,4 +1,4 @@
-import ThirdAddForm from '../../components/ThirdAddForm/ThirdAddForm';
+import AddItemForm from '../../components/AddItemForm/AddItemForm';
 
 
 
@@ -13,7 +13,8 @@ export default function Add() {
         <h2>This is the Add page</h2>
 
 
-        <ThirdAddForm />
+        <AddItemForm />
+        
 
       </>
     );

@@ -1,8 +1,10 @@
+
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import SingleItem from '../SingleItem/SingleItem'
 import { useNavigate } from 'react-router-dom'
 import "./Collections.css"
+
 
 
 
@@ -24,6 +26,7 @@ useEffect(() => {
     return (
       <>
           <h1>Collections</h1>
+          
           <div className="singleItems">
             {items.map(item => (
               <SingleItem  item={item} />
