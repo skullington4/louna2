@@ -1,4 +1,19 @@
-.singleItem {
+*, *:before, *:after {
+  box-sizing: border-box;
+}
 
-    border: 1px solid black;
+div {
+  display: flex;
+  
+}
+
+.singleItem {
+    position: relative;
+  }
+
+  img {
+    position: relative;
+    height: 250px;
+    width: 150px;
+
   }
