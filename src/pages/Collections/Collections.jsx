@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import SingleItem from '../SingleItem/SingleItem'
+import SingleCollection from '../SingleCollection/SingleCollection'
 import { useNavigate } from 'react-router-dom'
 import "./Collections.css"
 
@@ -10,15 +10,15 @@ import "./Collections.css"
 
 export default function Collections() {
 
-const [items, setItems] = useState([])
+const [collections, setCollections] = useState([])
 let navigate = useNavigate();
 
 useEffect(() => {
-  async function getItems() {
-    const result = await axios.get("/api/items")
-    setItems(result.data)
+  async function getCollections() {
+    const result = await axios.get("/api/collections")
+    setCollections(result.data)
   }
-  getItems()
+  getCollections()
 }, [])
   
 
@@ -26,9 +26,9 @@ useEffect(() => {
       <>
           <h1>Collections</h1>
           
-          <div className="singleItems">
-            {items.map(item => (
-              <SingleItem  item={item} />
+          <div className="singleCollections">
+            {collections.map(collection => (
+              <SingleCollection  collection={collection} />
             ))}
           </div>
       </>

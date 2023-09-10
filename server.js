@@ -84,5 +84,16 @@ app.post('/api/collections', upload.single('image'), async (req, res) => {
 
 })
 
+app.get("/api/collections", async (req, res) => {
+  const collections = await prisma.collections.findMany()
+
+  for (let collection of collections) {
+    collection.imageUrl = await getObjectSignedUrl(collection.imageName)
+    
+  }
+  
+  res.send(collections)
+})
+
 
 app.listen(3001, () => console.log("listening on port 3001"))
