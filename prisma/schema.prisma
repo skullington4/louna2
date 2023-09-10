@@ -12,6 +12,7 @@ model Items {
   description String
   imageName   String
   title       String
+  collection  String
 }
 
 model Collections {

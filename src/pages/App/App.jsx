@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import Collections from '../Collections/Collections';
+import SingleCollection from '../SingleCollection/SingleCollection';
 import Contact from '../Contact/Contact';
 import About from '../About/About';
 import Add from '../Add/Add';
@@ -20,7 +21,7 @@ export default function App() {
               <Route path="/About" element={<About />} />
               <Route path="/Contact" element={<Contact />} />
               <Route path="/Add" element={<Add />} />
-              <Route path="/Collections/:collection" element={<Collections />} />
+              <Route path="/Collections/:collection" element={<SingleCollection />} />
             
           </Routes>
 

@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import SingleItem from '../SingleItem/SingleItem'
+import SingleItem from '../../components/ItemCard/ItemCard'
 import { useNavigate } from 'react-router-dom'
 
 

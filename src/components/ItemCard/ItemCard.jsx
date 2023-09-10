@@ -1,6 +1,6 @@
-import './SingleItem.css'
+import './ItemCard.css'
 
-export default function SingleItem(item) {  
+export default function ItemCard(item) {  
 
   return (
     <div className="singleItem">
