@@ -1,9 +1,11 @@
 
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import SingleCollection from '../SingleCollection/SingleCollection'
+import CollectionCard from '../../components/CollectionCard/CollectionCard'
 import { useNavigate } from 'react-router-dom'
 import "./Collections.css"
+
+
 
 
 
@@ -28,7 +30,7 @@ useEffect(() => {
           
           <div className="singleCollections">
             {collections.map(collection => (
-              <SingleCollection  collection={collection} />
+              <CollectionCard  collection={collection} />
             ))}
           </div>
       </>

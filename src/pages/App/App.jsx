@@ -20,7 +20,7 @@ export default function App() {
               <Route path="/About" element={<About />} />
               <Route path="/Contact" element={<Contact />} />
               <Route path="/Add" element={<Add />} />
-              <Route path="/Collections/:item" element={<Collections />} />
+              <Route path="/Collections/:collection" element={<Collections />} />
             
           </Routes>
 
