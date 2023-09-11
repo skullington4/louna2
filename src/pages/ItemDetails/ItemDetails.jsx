@@ -2,40 +2,37 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import IndividualItemCard from '../../components/IndividualItemCard/IndividualItemCard'
-import { useNavigate } from 'react-router-dom'
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 
 
 
 
-export default function ItemDetails(item) {
+export default function ItemDetails() {
 
 
-    let collectionName = useParams();
+    let paramsName = useParams();
     
-    const [items, setItems] = useState([])
+    const [item, setItem] = useState([])
     
     useEffect(() => {
-        async function getItems() {
-            const result = await axios.get(`/api/collections/${collectionName.collection}`)
+        async function getItem() {
+            const result = await axios.get(`/api/collections/${paramsName.collection}/${paramsName.item}`)
 
-            setItems(result.data)
+            setItem(result.data)
         }
-        getItems()
+        getItem()
     }, [])
   
 
     return (
         <>
-            <h1>{collectionName.collection} Collection</h1>
+            <h1>{item.title} Collection</h1> 
             
           
             <div className="singleCollections">
-                {items.map(item => (
                 <IndividualItemCard  item={item} />
-                ))}
             </div>
         </>
     );

@@ -15,14 +15,21 @@ const upload = multer({ storage: storage })
 
 const generateFileName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex')
 
-// app.get("/api/items", async (req, res) => {
-  
-//   const items = await prisma.items.findMany()
-//   for (let item of items) {
-//     item.imageUrl = await getObjectSignedUrl(item.imageName)
-//   }
-//   res.send(items)
-// })
+app.get(`/api/collections/:collectionName/:itemName`, async (req, res) => {
+  let itemName = req.params.itemName
+  const item = await prisma.items.findMany({
+    where: {
+      imageName: {
+        equals: itemName
+      }}
+    })
+    console.log(item)
+
+  for (let i of item) {
+    i.imageUrl = await getObjectSignedUrl(i.imageName)
+  }
+  res.send(item)
+})
 
 app.get(`/api/collections/:collectionName`, async (req, res) => {
   let collectionName = req.params.collectionName

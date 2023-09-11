@@ -1,11 +1,8 @@
-import { Link } from "react-router-dom";
-
-
 export default function IndividualItemCard(item) {  
 
-
+  console.log(item)
   return (
-    <Link to={`/collections/${item.item.collection}/${item.item.imageName}`} state={item}>
+   
 
       <div className="singleItem">
             <div>
@@ -17,6 +14,6 @@ export default function IndividualItemCard(item) {
 
 
       </div>
-    </Link>
+
   )
 }
