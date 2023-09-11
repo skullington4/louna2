@@ -1,8 +1,7 @@
-import './ItemCards.css'
 import { Link } from "react-router-dom";
 
 
-export default function ItemCards(item) {  
+export default function IndividualItemCard(item) {  
 
 
   return (

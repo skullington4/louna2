@@ -1,9 +1,8 @@
 
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import ItemCard from '../../components/ItemCard/ItemCard'
+import IndividualItemCard from '../../components/IndividualItemCard/IndividualItemCard'
 import { useNavigate } from 'react-router-dom'
-import "./SingleCollection.css"
 import { useParams, useLocation } from "react-router-dom";
 
 
@@ -35,7 +34,7 @@ export default function ItemDetails(item) {
           
             <div className="singleCollections">
                 {items.map(item => (
-                <ItemCard  item={item} />
+                <IndividualItemCard  item={item} />
                 ))}
             </div>
         </>
