@@ -44,6 +44,14 @@ app.get(`/api/collections/:collectionName`, async (req, res) => {
   res.send(items)
 })
 
+
+app.get(`/api/collections/findall`, async (req, res) => {
+  console.log("Made it")
+  const items = await prisma.items.findMany({})
+  console.log(items, " ITem")
+  res.send(items)
+})
+
 app.post('/api/items', upload.single('image'), async (req, res) => {
   const file = req.file
   const title = req.body.title
