@@ -17,17 +17,16 @@ const generateFileName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex
 
 app.get(`/api/collections/:collectionName/:itemName`, async (req, res) => {
   let itemName = req.params.itemName
-  const item = await prisma.items.findMany({
+  const item = await prisma.items.findFirst({
     where: {
       imageName: {
         equals: itemName
       }}
     })
-    console.log(item)
 
-  for (let i of item) {
-    i.imageUrl = await getObjectSignedUrl(i.imageName)
-  }
+  // for (let i of item) {
+    item.imageUrl = await getObjectSignedUrl(item.imageName)
+  // }
   res.send(item)
 })
 

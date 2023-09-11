@@ -1,6 +1,6 @@
 export default function IndividualItemCard(item) {  
 
-  console.log(item)
+  console.log(item, "Ind. Card page")
   return (
    
 

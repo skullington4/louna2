@@ -28,7 +28,7 @@ export default function ItemDetails() {
 
     return (
         <>
-            <h1>{item.title} Collection</h1> 
+            <h1>{item.title} Item</h1> 
             
           
             <div className="singleCollections">
