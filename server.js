@@ -23,7 +23,6 @@ app.get(`/api/collections/:collectionName/:itemName`, async (req, res) => {
         equals: itemName
       }}
     })
-
     item.imageUrl = await getObjectSignedUrl(item.imageName)
   res.send(item)
 })
@@ -39,6 +38,12 @@ app.get(`/api/collections/:collectionName`, async (req, res) => {
   for (let item of items) {
     item.imageUrl = await getObjectSignedUrl(item.imageName)
   }
+  res.send(items)
+})
+
+
+app.get(`/api/collections/findall`, async (req, res) => {
+  const items = await prisma.items.findMany({})
   res.send(items)
 })
 
