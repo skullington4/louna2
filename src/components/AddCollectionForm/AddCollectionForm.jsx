@@ -33,6 +33,9 @@ export default function AddCollectionsForm() {
         <form onSubmit={submit} style={{width:650}} className="flex flex-col space-y-5 px-5 py-14">
           <input value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder='Title'></input>
           <input onChange={fileSelected} type="file" accept="image/*"></input>
+          <select>
+            <option></option>
+          </select>
           <button type="submit">Submit</button>
         </form>
 
