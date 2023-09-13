@@ -6,7 +6,8 @@ import ItemDetails from '../ItemDetails/ItemDetails';
 import Contact from '../Contact/Contact';
 import About from '../About/About';
 import Add from '../Add/Add';
-import './App.css';
+import Home from '../Home/Home';
+import './newApp.css';
 
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
         <>
           <NavBar />
           <Routes>
+              <Route path="/" element={<Home />} />
               <Route path="/Collections" element={<Collections />} />
               <Route path="/About" element={<About />} />
               <Route path="/Contact" element={<Contact />} />
