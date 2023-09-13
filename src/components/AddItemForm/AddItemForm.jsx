@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
@@ -9,9 +9,22 @@ export default function AddItemForm() {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [collection, setCollection] = useState("")
-
+  const [dropdown, setDropdown] = useState([])
 
   const navigate = useNavigate()
+
+  useEffect(() => {
+    async function getDropdown() {
+        const result = await axios.get(`/api/collections`)
+        setDropdown(result.data)
+    }
+    getDropdown()
+}, [])
+  let finalDrop = dropdown.map((d) => {
+    return (
+      <option>{d.title}</option>
+    )
+  })
 
   const submit = async event => {
     event.preventDefault()
@@ -33,12 +46,14 @@ export default function AddItemForm() {
 	}
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div>
 
-        <form onSubmit={submit} style={{width:650}} className="flex flex-col space-y-5 px-5 py-14">
+        <form onSubmit={submit}>
           <input value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder='Title'></input>
           <input value={description} onChange={e => setDescription(e.target.value)} type="text" placeholder='Description'></input>
-          <input value={collection} onChange={e => setCollection(e.target.value)} type="text" placeholder='Collection'></input>
+          <select value={collection} onChange={e => setCollection(e.target.value)}>
+            {finalDrop}
+          </select>
           <input onChange={fileSelected} type="file" accept="image/*"></input>
           <button type="submit">Submit</button>
         </form>
