@@ -17,7 +17,10 @@ export default function App() {
   return (
     <main className="App">
         <>
-          <NavBar />
+          <div className="navbarcol">
+            <NavBar />
+          </div>
+          <div className="rest">
           <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/Collections" element={<Collections />} />
@@ -26,9 +29,8 @@ export default function App() {
               <Route path="/Add" element={<Add />} />
               <Route path="/Collections/:collection" element={<SingleCollection />} />
               <Route path="/Collections/:collection/:item" element={<ItemDetails />} />
-
-            
           </Routes>
+          </div>
 
 
 
