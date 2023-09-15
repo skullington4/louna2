@@ -20,13 +20,9 @@
     justify-content: center;
     position: fixed;
     top: 0;
-    transition: 850ms;
+    left: 0;
   }
   
-  .nav-menu.active {
-    left: 0;
-    transition: 350ms;
-  }
   
   .nav-text {
     display: flex;
