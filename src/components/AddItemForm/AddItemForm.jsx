@@ -17,6 +17,7 @@ export default function AddItemForm() {
     async function getDropdown() {
         const result = await axios.get(`/api/collections`)
         setDropdown(result.data)
+        setCollection(result.data[0].title)
     }
     getDropdown()
 }, [])
@@ -25,6 +26,7 @@ export default function AddItemForm() {
       <option>{d.title}</option>
     )
   })
+
 
   const submit = async event => {
     event.preventDefault()
@@ -37,7 +39,7 @@ export default function AddItemForm() {
 
     await axios.post("/api/items", formData, { headers: {'Content-Type': 'multipart/form-data'}})
 
-    navigate("/")
+    navigate("/collections")
   }
 
   const fileSelected = event => {
@@ -52,6 +54,8 @@ export default function AddItemForm() {
           <input value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder='Title'></input>
           <input value={description} onChange={e => setDescription(e.target.value)} type="text" placeholder='Description'></input>
           <select value={collection} onChange={e => setCollection(e.target.value)}>
+          <option value="none" disabled hidden>
+          </option>
             {finalDrop}
           </select>
           <input onChange={fileSelected} type="file" accept="image/*"></input>

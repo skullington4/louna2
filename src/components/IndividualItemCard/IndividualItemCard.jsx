@@ -1,5 +1,6 @@
 import './IndividualItemCard.css'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export default function IndividualItemCard(item) {  
 
@@ -24,8 +25,10 @@ export default function IndividualItemCard(item) {
             <h4>Collection: { item.item.collection }</h4>
 
             <div onClick={() => deleteItemClicked({id})}>
-              <h6 className=''> X </h6>
-              <p>This is here</p>
+              <Link to={`/collections/${item.item.collection}`}>
+                <h6 className=''> X </h6>
+              </Link>
+              
             </div>
       </div>
 
