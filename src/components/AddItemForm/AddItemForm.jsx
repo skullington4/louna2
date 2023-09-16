@@ -51,14 +51,14 @@ export default function AddItemForm() {
     <div>
 
         <form onSubmit={submit}>
-          <input value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder='Title'></input>
-          <input value={description} onChange={e => setDescription(e.target.value)} type="text" placeholder='Description'></input>
-          <select value={collection} onChange={e => setCollection(e.target.value)}>
+          <input value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder='Title' required></input>
+          <input value={description} onChange={e => setDescription(e.target.value)} type="text" placeholder='Description' required></input>
+          <select value={collection} onChange={e => setCollection(e.target.value)} required>
           <option value="none" disabled hidden>
           </option>
             {finalDrop}
           </select>
-          <input onChange={fileSelected} type="file" accept="image/*"></input>
+          <input onChange={fileSelected} type="file" accept="image/*" required></input>
           <button type="submit">Submit</button>
         </form>
 

@@ -36,8 +36,8 @@ export default function AddCollectionsForm() {
     <div>
 
         <form onSubmit={submit}>
-          <input value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder='Title'></input>
-          <input onChange={fileSelected} type="file" accept="image/*"></input>
+          <input value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder='Title' required></input>
+          <input onChange={fileSelected} type="file" accept="image/*" required></input>
           <button type="submit">Submit</button>
         </form>
 
