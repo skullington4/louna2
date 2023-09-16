@@ -55,7 +55,7 @@ app.post('/api/items', upload.single('image'), async (req, res) => {
   const imageName = generateFileName()
 
   const fileBuffer = await sharp(file.buffer)
-    .resize({ height: 1920, width: 1080, fit: "contain" })
+    // .resize({ height: 1920, width: 1080, fit: "contain" })
     .toBuffer()
 
   await uploadFile(fileBuffer, imageName, file.mimetype)
@@ -74,14 +74,16 @@ app.post('/api/items', upload.single('image'), async (req, res) => {
 
 })
 
-app.delete("/api/items/:id", async (req, res) => {
-  const id = +req.params.id
-  const post = await prisma.posts.findUnique({where: {id}}) 
 
-  await deleteFile(post.imageName)
+app.delete("/api/collections/:id", async (req, res) => {
+  const id = req.params.id
 
-  await prisma.posts.delete({where: {id: post.id}})
-  res.send(post)
+  const item = await prisma.items.findUnique({where: {id}}) 
+
+  await deleteFile(item.imageName)
+
+  await prisma.items.delete({where: {id: item.id}})
+  res.send(item)
 })
 
 

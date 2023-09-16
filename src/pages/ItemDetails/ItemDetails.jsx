@@ -27,6 +27,9 @@ export default function ItemDetails() {
     }, [])
   
 
+
+
+
     return (
         <>
             <p className='backlinks'>
@@ -46,6 +49,7 @@ export default function ItemDetails() {
             <div className="singleCollections">
                 <IndividualItemCard  item={item} />
             </div>
+
         </>
     );
   }

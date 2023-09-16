@@ -9,9 +9,9 @@ export default function CollectionCard(collection) {
     <Link to={`/collections/${collection.collection.title}`} state={collection}>
         <div className="singleCollection">
             <div>
-                <img className="rounded" src={collection.collection.imageUrl}></img>
+                <img src={collection.collection.imageUrl}></img>
             </div>
-            <h2>Title: { collection.collection.title }</h2>
+            <h2>{ collection.collection.title }</h2>
 
         </div>
     </Link>
