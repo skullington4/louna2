@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 export default function CollectionCard(collection) {  
 
   return (
+
     <Link to={`/collections/${collection.collection.title}`} state={collection}>
         <div className="singleCollection">
             <div>

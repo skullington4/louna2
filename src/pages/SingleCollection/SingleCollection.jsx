@@ -4,7 +4,7 @@ import axios from 'axios'
 import ItemCards from '../../components/ItemCards/ItemCards'
 import "./SingleCollection.css"
 import { useParams } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -28,6 +28,9 @@ export default function SingleCollection() {
 
     return (
         <>
+            <Link to={`/collections`}>
+                <div>Collections</div>
+            </Link>
             <h1>{collectionName.collection} Collection</h1>
             
           

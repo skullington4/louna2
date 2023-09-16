@@ -1,3 +1,5 @@
+import './IndividualItemCard.css'
+
 export default function IndividualItemCard(item) {  
 
   console.log(item, "Ind. Card page")
@@ -5,11 +7,11 @@ export default function IndividualItemCard(item) {
    
 
       <div className="singleItem">
-            <div>
-              <img className="rounded" src={item.item.imageUrl} alt=''></img>
+            <h2 className="title">Title: { item.item.title }</h2>
+            <div className="imageanddesc">
+              <h4 className="desc">Description: { item.item.description }</h4>
+              <img className="image" src={item.item.imageUrl} alt=''></img>
             </div>
-            <h2>Title: { item.item.title }</h2>
-            <h4>Description: { item.item.description }</h4>
             <h4>Collection: { item.item.collection }</h4>
 
 

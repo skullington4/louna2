@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import IndividualItemCard from '../../components/IndividualItemCard/IndividualItemCard'
 import { useParams } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -28,6 +28,9 @@ export default function ItemDetails() {
 
     return (
         <>
+            <Link to={`/collections/${item.collection}`}>
+                <div>Collections {'>'} {item.collection} </div>
+            </Link>
             <h1>{item.title} Item</h1> 
             
           
