@@ -9,6 +9,8 @@ export default function AddItemForm() {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [collection, setCollection] = useState("")
+  const [link1, setLink1] = useState("")
+  const [link2, setLink2] = useState("")
   const [dropdown, setDropdown] = useState([])
 
   const navigate = useNavigate()
@@ -36,6 +38,9 @@ export default function AddItemForm() {
     formData.append("title", title)
     formData.append("description", description)
     formData.append("collection", collection)
+    formData.append("link1", link1)
+    formData.append("link2", link2)
+    
 
     await axios.post("/api/items", formData, { headers: {'Content-Type': 'multipart/form-data'}})
 
@@ -59,6 +64,9 @@ export default function AddItemForm() {
             {finalDrop}
           </select>
           <input onChange={fileSelected} type="file" accept="image/*" required></input>
+          <input value={link1} onChange={e => setLink1(e.target.value)} type="text" placeholder='Link1' required></input>
+          <input value={link2} onChange={e => setLink2(e.target.value)} type="text" placeholder='Link2' required></input>
+
           <button type="submit">Submit</button>
         </form>
 

@@ -52,10 +52,11 @@ app.post('/api/items', upload.single('image'), async (req, res) => {
   const title = req.body.title
   const description = req.body.description
   const collection = req.body.collection
+  const link1 = req.body.link1
+  const link2 = req.body.link2
   const imageName = generateFileName()
 
   const fileBuffer = await sharp(file.buffer)
-    // .resize({ height: 1920, width: 1080, fit: "contain" })
     .toBuffer()
 
   await uploadFile(fileBuffer, imageName, file.mimetype)
@@ -65,7 +66,9 @@ app.post('/api/items', upload.single('image'), async (req, res) => {
       title,
       description,
       collection,
-      imageName
+      imageName,
+      link1,
+      link2
     }
   })
   
@@ -93,7 +96,6 @@ app.post('/api/collections', upload.single('image'), async (req, res) => {
   const imageName = generateFileName()
 
   const fileBuffer = await sharp(file.buffer)
-    .resize({ height: 1920, width: 1080, fit: "contain" })
     .toBuffer()
 
   await uploadFile(fileBuffer, imageName, file.mimetype)

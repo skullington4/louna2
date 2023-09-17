@@ -13,10 +13,16 @@ model Items {
   imageName   String
   title       String
   collection  String
+  link1       String
+  link2       String
+  createdAt   DateTime   @default(now())
+
 }
 
 model Collections {
   id            String  @id @default(auto()) @map("_id") @db.ObjectId
   title         String
   imageName     String
+  archived      Boolean    @default(false)
+  createdAt     DateTime   @default(now())
 }
