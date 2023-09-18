@@ -6,11 +6,11 @@ export default function ItemCards(item) {
 
 
   return (
-    <Link to={`/collections/${item.item.collection}/${item.item.imageName}`} state={item}>
+    <Link to={`/collections/${item.item.collection}/${item.item.imageName1}`} state={item}>
 
       <div className="singleItem">
             <div>
-              <img className="rounded" src={item.item.imageUrl} alt=''></img>
+              <img className="rounded" src={item.item.imageUrl1} alt=''></img>
             </div>
             <h2>Title: { item.item.title }</h2>
             <h4>Description: { item.item.description }</h4>

@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom'
 
 export default function AddItemForm() {  
 
-  const [file, setFile] = useState()
+  const [file1, setFile1] = useState()
+  const [file2, setFile2] = useState()
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [collection, setCollection] = useState("")
@@ -34,14 +35,16 @@ export default function AddItemForm() {
     event.preventDefault()
 
     const formData = new FormData();
-    formData.append("image", file)
+    formData.append("image", file1)
+    formData.append("image", file2)
     formData.append("title", title)
     formData.append("description", description)
     formData.append("collection", collection)
     formData.append("link1", link1)
     formData.append("link2", link2)
     
-
+    console.log(file1)
+    console.log(file2)
     await axios.post("/api/items", formData, { headers: {'Content-Type': 'multipart/form-data'}})
 
     navigate("/collections")
@@ -49,7 +52,12 @@ export default function AddItemForm() {
 
   const fileSelected = event => {
     const file = event.target.files[0]
-		setFile(file)
+		setFile1(file)
+	}
+
+  const fileSelected2 = event => {
+    const file = event.target.files[0]
+		setFile2(file)
 	}
 
   return (
@@ -64,6 +72,7 @@ export default function AddItemForm() {
             {finalDrop}
           </select>
           <input onChange={fileSelected} type="file" accept="image/*" required></input>
+          <input onChange={fileSelected2} type="file" accept="image/*" required></input>
           <input value={link1} onChange={e => setLink1(e.target.value)} type="text" placeholder='Link1' required></input>
           <input value={link2} onChange={e => setLink2(e.target.value)} type="text" placeholder='Link2' required></input>
 

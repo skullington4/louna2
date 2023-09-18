@@ -22,7 +22,8 @@ export default function IndividualItemCard(item) {
               <Link to={"https://" + item.item.link1} target="_blank" >Shirt</Link>
               <Link to={"https://" + item.item.link2} target="_blank" >Pants</Link>
               </h4>
-              <img className="image" src={item.item.imageUrl} alt=''></img>
+              <img className="image" src={item.item.imageUrl1} alt=''></img>
+              <img className="image" src={item.item.imageUrl2} alt=''></img>
             </div>
             <h4>Collection: { item.item.collection }</h4>
 
