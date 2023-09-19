@@ -25,6 +25,8 @@ app.get(`/api/collections/:collectionName/:itemName`, async (req, res) => {
     })
     item.imageUrl1 = await getObjectSignedUrl(item.imageName1)
     item.imageUrl2 = await getObjectSignedUrl(item.imageName2)
+    item.imageUrl3 = await getObjectSignedUrl(item.imageName3)
+
   res.send(item)
 })
 
@@ -39,6 +41,7 @@ app.get(`/api/collections/:collectionName`, async (req, res) => {
   for (let item of items) {
     item.imageUrl1 = await getObjectSignedUrl(item.imageName1)
     item.imageUrl2 = await getObjectSignedUrl(item.imageName2)
+    item.imageUrl3 = await getObjectSignedUrl(item.imageName3)
   }
   res.send(items)
 })
@@ -49,11 +52,11 @@ app.get(`/api/collections/findall`, async (req, res) => {
   res.send(items)
 })
 
-app.post('/api/items', upload.array('image',2), async (req, res) => {
+app.post('/api/items', upload.array('image',3), async (req, res) => {
   const files = req.files
   const file1 = files[0]
   const file2 = files[1]
-  console.log("This is files1: " + file1)
+  const file3 = files[2]
   const title = req.body.title
   const description = req.body.description
   const collection = req.body.collection
@@ -61,6 +64,7 @@ app.post('/api/items', upload.array('image',2), async (req, res) => {
   const link2 = req.body.link2
   const imageName1 = generateFileName()
   const imageName2 = generateFileName()
+  const imageName3 = generateFileName()
 
   const fileBuffer1 = await sharp(file1.buffer)
     .toBuffer()
@@ -70,6 +74,10 @@ app.post('/api/items', upload.array('image',2), async (req, res) => {
     .toBuffer()
   await uploadFile(fileBuffer2, imageName2, file2.mimetype)
 
+  const fileBuffer3 = await sharp(file3.buffer)
+  .toBuffer()
+await uploadFile(fileBuffer3, imageName3, file3.mimetype)
+
   const item = await prisma.items.create({
     data: {
       title,
@@ -77,6 +85,7 @@ app.post('/api/items', upload.array('image',2), async (req, res) => {
       collection,
       imageName1,
       imageName2,
+      imageName3,
       link1,
       link2
     }

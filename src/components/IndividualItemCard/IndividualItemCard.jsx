@@ -19,11 +19,16 @@ export default function IndividualItemCard(item) {
             <h2 className="title">{ item.item.title }</h2>
             <div className="imageanddesc">
               <h4 className="desc">Description: { item.item.description }
-              <Link to={"https://" + item.item.link1} target="_blank" >Shirt</Link>
-              <Link to={"https://" + item.item.link2} target="_blank" >Pants</Link>
+              <div>
+                <Link to={"https://" + item.item.link1} target="_blank" >Shirt</Link>
+              </div>
+              <div>
+                <Link to={"https://" + item.item.link2} target="_blank" >Pants</Link>
+              </div>
               </h4>
               <img className="image" src={item.item.imageUrl1} alt=''></img>
               <img className="image" src={item.item.imageUrl2} alt=''></img>
+              <img className="image" src={item.item.imageUrl3} alt=''></img>
             </div>
             <h4>Collection: { item.item.collection }</h4>
 
