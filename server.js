@@ -26,7 +26,6 @@ app.get(`/api/collections/:collectionName/:itemName`, async (req, res) => {
     item.imageUrl1 = await getObjectSignedUrl(item.imageName1)
     item.imageUrl2 = await getObjectSignedUrl(item.imageName2)
     item.imageUrl3 = await getObjectSignedUrl(item.imageName3)
-
   res.send(item)
 })
 
@@ -65,6 +64,7 @@ app.post('/api/items', upload.array('image',3), async (req, res) => {
   const imageName1 = generateFileName()
   const imageName2 = generateFileName()
   const imageName3 = generateFileName()
+  
 
   const fileBuffer1 = await sharp(file1.buffer)
     .toBuffer()

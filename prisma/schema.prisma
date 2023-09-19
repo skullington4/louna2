@@ -13,6 +13,7 @@ model Items {
   imageName1  String
   imageName2  String
   imageName3  String
+  imageName4  String
   title       String
   collection  String
   link1       String
