@@ -45,18 +45,20 @@ export default function IndividualItemCard(item) {
                 <Link to={"https://" + item.item.link2} target="_blank" >Pants</Link>
               </div>
               </h4>
-
-              
-              <img className="image" src={item.item.imageUrl1} alt='' onClick={() => handleClick(item.item.imageUrl1)}></img>
-              <img className="image" src={item.item.imageUrl2} alt='' onClick={() => handleClick(item.item.imageUrl2)}></img>
-              <img className="image" src={item.item.imageUrl3} alt='' onClick={() => handleClick(item.item.imageUrl3)}></img>
-              <img className="image" src={imageSlide} alt=''></img>
+            </div>
+            <div>
+              <img className="bigImage" src={imageSlide} alt=''></img>
+            </div>
+            <div>
+              <img className="thumbnailImage" src={item.item.imageUrl1} alt='' onClick={() => handleClick(item.item.imageUrl1)}></img>
+              <img className="thumbnailImage" src={item.item.imageUrl2} alt='' onClick={() => handleClick(item.item.imageUrl2)}></img>
+              <img className="thumbnailImage" src={item.item.imageUrl3} alt='' onClick={() => handleClick(item.item.imageUrl3)}></img>
             </div>
             <h4>Collection: { item.item.collection }</h4>
 
 
             <div onClick={() => deleteItemClicked({id})}>
-              <Link to={`/collections/${item.item.collection}`}>
+              <Link to={`/collections`}>
                 <h6 className=''> X </h6>
               </Link>
               

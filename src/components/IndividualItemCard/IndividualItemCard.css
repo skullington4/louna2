@@ -3,4 +3,16 @@
     flex-direction: row;
 }
 
+.bigImage {
+    height: 500px;
+    width: 500px;
+}
 
+.thumbnailImage {
+    height: 50px;
+    width: 50px;
+}
+
+[role=navigation] {
+    overflow: auto !important
+}

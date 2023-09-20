@@ -100,7 +100,9 @@ app.delete("/api/collections/:id", async (req, res) => {
 
   const item = await prisma.items.findUnique({where: {id}}) 
 
-  await deleteFile(item.imageName)
+  await deleteFile(item.imageName1)
+  await deleteFile(item.imageName2)
+  await deleteFile(item.imageName3)
 
   await prisma.items.delete({where: {id: item.id}})
   res.send(item)

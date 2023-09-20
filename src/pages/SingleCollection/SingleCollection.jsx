@@ -37,6 +37,7 @@ export default function SingleCollection() {
             <div className="singleCollections">
                 {items.map(item => (
                 <ItemCards  item={item} />
+                
                 ))}
             </div>
         </>
