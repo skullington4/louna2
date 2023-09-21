@@ -31,30 +31,38 @@ export default function IndividualItemCard(item) {
   }
 
   return (
-   
-    
-
-      <div className="singleItem">
-            <h2 className="title">{ item.item.title }</h2>
-            <div className="imageanddesc">
-              <h4 className="desc">Description: { item.item.description }
-              <div>
-                <Link to={"https://" + item.item.link1} target="_blank" >Shirt</Link>
-              </div>
-              <div>
-                <Link to={"https://" + item.item.link2} target="_blank" >Pants</Link>
-              </div>
-              </h4>
-            </div>
-            <div>
+      <div className="individualItem">
+        <div className="allPictures">
+          <div>
               <img className="bigImage" src={imageSlide} alt=''></img>
-            </div>
-            <div>
+          </div>
+          <div>
               <img className="thumbnailImage" src={item.item.imageUrl1} alt='' onClick={() => handleClick(item.item.imageUrl1)}></img>
               <img className="thumbnailImage" src={item.item.imageUrl2} alt='' onClick={() => handleClick(item.item.imageUrl2)}></img>
               <img className="thumbnailImage" src={item.item.imageUrl3} alt='' onClick={() => handleClick(item.item.imageUrl3)}></img>
-            </div>
-            <h4>Collection: { item.item.collection }</h4>
+          </div>
+        </div>
+        <div className="restOfPage">
+
+          <h2 className="title">{ item.item.title }</h2>
+              <div className="imageanddesc">
+                <h4 className="desc">Description: { item.item.description }
+                <div>
+                  <Link to={"https://" + item.item.link1} target="_blank" >Shirt</Link>
+                </div>
+                <div>
+                  <Link to={"https://" + item.item.link2} target="_blank" >Pants</Link>
+                </div>
+                </h4>
+              </div>
+              
+              <h4>Collection: { item.item.collection }</h4>
+        </div>
+
+
+
+
+
 
 
             <div onClick={() => deleteItemClicked({id})}>

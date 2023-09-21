@@ -12,11 +12,7 @@ export default function ItemCards(item) {
             <div>
               <img className="rounded" src={item.item.imageUrl1} alt=''></img>
             </div>
-            <h2>Title: { item.item.title }</h2>
-            <h4>Description: { item.item.description }</h4>
-            <h4>Collection: { item.item.collection }</h4>
-
-
+            <h2>{ item.item.title }</h2>
       </div>
     </Link>
   )
