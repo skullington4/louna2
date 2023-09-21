@@ -3,3 +3,10 @@
     display: flex;
     align-items: center;
 }
+
+.singleCollections {
+    height: 100vh;
+    overflow: auto;
+    width: 80vw;
+    left: 15px;
+}

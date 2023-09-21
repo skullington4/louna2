@@ -8,7 +8,6 @@ export default function AddItemForm() {
   const [file1, setFile1] = useState()
   const [file2, setFile2] = useState()
   const [file3, setFile3] = useState()
-  const [file4, setFile4] = useState()
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [collection, setCollection] = useState("")
@@ -40,7 +39,6 @@ export default function AddItemForm() {
     formData.append("image", file1)
     formData.append("image", file2)
     formData.append("image", file3)
-    formData.append("image", file4)
     formData.append("title", title)
     formData.append("description", description)
     formData.append("collection", collection)
@@ -55,7 +53,6 @@ export default function AddItemForm() {
   const fileSelected = event => {
     const file = event.target.files[0]
 		setFile1(file)
-    setFile4(file)
 	}
 
   const fileSelected2 = event => {
