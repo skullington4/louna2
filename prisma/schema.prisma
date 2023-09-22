@@ -30,7 +30,7 @@ model Collections {
 }
 
 
-model Collections {
+model Users {
   id            String  @id @default(auto()) @map("_id") @db.ObjectId
   username      String
   pass          String

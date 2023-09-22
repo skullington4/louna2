@@ -1,7 +1,7 @@
 // users-api.js
 
 // Add the following import
-import sendRequest from './send-request';
+import sendRequest from './send-request.js';
 const BASE_URL = '/api/users';
 
 // Refactored code below

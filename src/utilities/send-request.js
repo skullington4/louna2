@@ -1,5 +1,5 @@
 // send-request.js
-import { getToken } from "./users-service";
+import { getToken } from "./users-service.js";
 
 export default async function sendRequest(url, method = 'GET', payload = null) {
     // Fetch accepts an options object as the 2nd argument

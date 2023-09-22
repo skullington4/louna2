@@ -11,7 +11,7 @@ import Home from '../Home/Home';
 import { getUser } from '../../utilities/users-service';
 import AuthPage from '../AuthPage/AuthPage';
 import './newApp.css';
-import user from '../../../models/user';
+// import user from "../../../models/user"
 
 
 export default function App() {
@@ -34,11 +34,14 @@ export default function App() {
               <Route path="/Contact" element={<Contact />} />
               <Route path="/Collections/:collection" element={<SingleCollection />} />
               <Route path="/Collections/:collection/:item" element={<ItemDetails />} />
+          <Route path="/Add" element={<Add />} />
+          <Route path="/login" element={<AuthPage />} />
           </Routes>
           </div>
           </>
         :
-        <Route path="/Add" element={<Add />} />
+        <>
+        </>
 
         }      
     </main>
