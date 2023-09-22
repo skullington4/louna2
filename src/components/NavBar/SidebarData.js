@@ -1,6 +1,6 @@
 export const SidebarData = [
     {
-      title: 'Home',
+      title: 'Plural',
       path: '/',
       cName: 'nav-text'
     },
