@@ -1,3 +1,18 @@
 h2 {
     text-align: center;
 }
+
+.singleCollection {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    
+}
+
+.collectionName {
+    align-self: center;
+    margin: 100px;
+}
+

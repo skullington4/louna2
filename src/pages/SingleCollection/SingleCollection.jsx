@@ -31,10 +31,10 @@ export default function SingleCollection() {
             <Link to={`/collections`}>
                 <div>Collections</div>
             </Link>
-            <h1>{collectionName.collection} Collection</h1>
-            
+
+            <h1 className='collectionName'>{collectionName.collection} Collection</h1>
           
-            <div className="singleCollections">
+            <div className="collectionCards">
                 {items.map(item => (
                 <ItemCards  item={item} />
                 

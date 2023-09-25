@@ -8,25 +8,22 @@ import Contact from '../Contact/Contact';
 import About from '../About/About';
 import Add from '../Add/Add';
 import Home from '../Home/Home';
-import { getUser } from '../../utilities/users-service';
 import AuthPage from '../AuthPage/AuthPage';
 import './newApp.css';
-// import user from "../../../models/user"
-
+import { RequireAuth } from 'react-auth-kit';
 
 export default function App() {
 
-  const [user, setUser] = useState(getUser());
 
 
   return (
     <main className="App">
-        {!user ?
-          <>
+       <>
             <div className="navbarcol">
             <NavBar />
           </div>
           <div className="rest">
+          
           <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/Collections" element={<Collections />} />
@@ -34,16 +31,20 @@ export default function App() {
               <Route path="/Contact" element={<Contact />} />
               <Route path="/Collections/:collection" element={<SingleCollection />} />
               <Route path="/Collections/:collection/:item" element={<ItemDetails />} />
-          <Route path="/Add" element={<Add />} />
-          <Route path="/login" element={<AuthPage />} />
+              
+              <Route path="/Add" element={
+                <RequireAuth loginPath='/login'>
+                  <Add />
+                </RequireAuth>
+              } />
+              <Route path="/login" element={<AuthPage />} />
           </Routes>
           </div>
-          </>
-        :
-        <>
+         
+        
         </>
 
-        }      
+             
     </main>
   );
 }

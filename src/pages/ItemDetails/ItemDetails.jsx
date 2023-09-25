@@ -46,7 +46,7 @@ export default function ItemDetails() {
             <h1>{item.title} Item</h1> 
             
           
-            <div className="singleCollections">
+            <div className="individualItemCard">
                 <IndividualItemCard  item={item} />
             </div>
 

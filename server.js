@@ -6,6 +6,7 @@ import crypto from 'crypto'
 
 import { PrismaClient } from '@prisma/client'
 import { uploadFile, deleteFile, getObjectSignedUrl } from './s3.js'
+import { request } from 'http'
 
 const app = express()
 const prisma = new PrismaClient()
@@ -141,6 +142,22 @@ app.get("/api/collections", async (req, res) => {
   
   res.send(collections)
 })
+
+
+
+
+app.post('/api/users', async (req, res) => {
+
+  console.log('Hit the api users', req.url, req.method)
+
+})
+
+
+
+
+
+
+
 
 
 app.listen(3001, () => console.log("listening on port 3001"))

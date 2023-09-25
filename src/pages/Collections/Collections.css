@@ -1,14 +1,9 @@
-* {
-  box-sizing: border-box;
-}
+.collectionCards {
+    height: 100vh;
+    overflow: auto;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr;
+    grid-auto-rows: max-content;
 
-.singleCollections {
-    
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin: 50px;
   }

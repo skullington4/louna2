@@ -22,7 +22,7 @@ useEffect(() => {
       <>
           <h1>Collections</h1>
           
-          <div className="singleCollections">
+          <div className="collectionCards">
             {collections.map(collection => (
               <CollectionCard  collection={collection} />
             ))}
