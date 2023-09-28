@@ -146,10 +146,18 @@ app.get("/api/collections", async (req, res) => {
 
 
 
-app.post('/api/users', async (req, res) => {
-
-  console.log('Hit the api users', req.url, req.method)
-
+app.post('api/signup', async (req, res) => {
+  console.log(req.body, "req.body")
+  const { name, username, email, password } = req.body
+  const user = await prisma.user.create({
+    data: {
+      name,
+      username,
+      email,
+      password
+    }
+  })
+  res.send(user)
 })
 
 

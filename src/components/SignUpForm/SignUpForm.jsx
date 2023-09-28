@@ -1,52 +1,81 @@
-import { Component } from 'react';
-import { signUp } from '../../utilities/users-service';
-import { useSignIn } from "react-auth-kit";
-import axios, { AxiosError } from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { PrismaClient } from '@prisma/client'
+import axios from "axios";
 
+export default function SignUpForm() {
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
-export default class SignUpForm extends Component {
-  state = {
-    name: '',
-    username: '',
-    email: '',
-    password: '',
-    confirm: '',
-    error: ''
-  };
-
-  handleChange = (evt) => {
-    this.setState({
-      [evt.target.name]: evt.target.value,
-      error: ''
-    });
-  };
-
- 
-
-  render() {
-    const disable = this.state.password !== this.state.confirm;
-    return (
-      <div>
-        <div className="form-container">
-          <form autoComplete="off" onSubmit={this.handleSubmit}>
-            <label>Name</label>
-            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required />
-            <label>Username</label>
-            <input type="text" name="username" value={this.state.username} onChange={this.handleChange} required />
-            <label>Email</label>
-            <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required />
-            <label>Password</label>
-            <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
-            <label>Confirm</label>
-            <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} required />
-            <button type="submit" disabled={disable}>SIGN UP</button>
-          </form>
-        </div>
-        <p className="error-message">&nbsp;{this.state.error}</p>
-      </div>
-    );
+  async function handleSubmit(event) {
+    event.preventDefault();
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+    try {
+      const { data } = await axios.post("/api/signup", {
+        name,
+        username,
+        email,
+        password,
+      });
+      console.log(data);
+    } catch (error) {
+      setError(error.message);
+    }
   }
+
+  return (
+    <div>
+      <div className="form-container">
+        <form autoComplete="off" onSubmit={handleSubmit}>
+          <label>Name</label>
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            required
+          />
+          <label>Username</label>
+          <input
+            type="text"
+            name="username"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+            required
+          />
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            required
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            required
+          />
+          <label>Confirm Password</label>
+          <input
+            type="password"
+            name="confirmPassword"
+            value={confirmPassword}
+            onChange={(event) => setConfirmPassword(event.target.value)}
+            required
+          />
+          <button type="submit">SIGN UP</button>
+        </form>
+      </div>
+      <p className="error-message">&nbsp;{error}</p>
+    </div>
+  );
 }
