@@ -14,6 +14,7 @@ import { RequireAuth } from 'react-auth-kit';
 
 export default function App() {
 
+  const [user, setUser] = useState(null);
 
 
   return (
@@ -37,7 +38,7 @@ export default function App() {
                   <Add />
                 </RequireAuth>
               } />
-              <Route path="/login" element={<AuthPage />} />
+              <Route path="/login" element={<AuthPage setUser={setUser} />} />
           </Routes>
           </div>
          

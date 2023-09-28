@@ -1,29 +1,37 @@
-import { useState } from 'react';
-import * as usersService from '../../utilities/users-service';
+import { useState } from "react";
+import axios from "axios";
+import { useSignIn } from "react-auth-kit";
 
-export default function LoginForm({ setUser }) {
-  const [credentials, setCredentials] = useState({
-    email: '',
-    password: ''
-  });
-  const [error, setError] = useState('');
+export default function LoginForm({setUser}) {
+  const [credentials, setCredentials] = useState({ email: "", password: "", image: null });
+  const [error, setError] = useState("");
+  const signIn = useSignIn();
 
-  function handleChange(evt) {
-    setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
-    setError('');
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setCredentials((prevCredentials) => ({ ...prevCredentials, [name]: value }));
   }
 
-  async function handleSubmit(evt) {
-    // Prevent form from being submitted to the server
-    evt.preventDefault();
+  function handleImageChange(event) {
+    setCredentials((prevCredentials) => ({ ...prevCredentials, image: event.target.files[0] }));
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
     try {
-      // The promise returned by the signUp service method 
-      // will resolve to the user object included in the
-      // payload of the JSON Web Token (JWT)
-      const user = await usersService.login(credentials);
-      setUser(user);
-    } catch {
-      setError('Log In Failed - Try Again');
+      const formData = new FormData();
+      formData.append("email", credentials.email);
+      formData.append("password", credentials.password);
+      formData.append("image", credentials.image);
+      const { data } = await axios.post("/api/login", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(data);
+      setUser(data);
+    } catch (error) {
+      setError(error.message);
     }
   }
 
@@ -35,6 +43,8 @@ export default function LoginForm({ setUser }) {
           <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
           <label>Password</label>
           <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
+          <label>Image</label>
+          <input type="file" name="image" onChange={handleImageChange} />
           <button type="submit">LOG IN</button>
         </form>
       </div>

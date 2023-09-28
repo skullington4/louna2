@@ -161,7 +161,19 @@ app.post('/api/signup', upload.array('image',3), async (req, res) => {
 })
 
 
-
+app.post('/api/login', upload.array('image',3), async (req, res) => {
+  const { email, password } = req.body
+  const user = await prisma.user.findUnique({
+    where: {
+      email
+    }
+  })
+  if (user.password === password) {
+    res.send(user)
+  } else {
+    res.send({ error: "invalid password" })
+  }
+})
 
 
 
