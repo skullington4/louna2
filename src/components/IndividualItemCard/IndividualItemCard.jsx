@@ -4,17 +4,19 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-export default function IndividualItemCard({item, user}) {  
+export default function IndividualItemCard({ user }) {  
 
-  const id = item.item.id
-  const [imageSlide, setImageSlide] = useState(item.item.imageUrl1);
-
+  const [imageSlide, setImageSlide] = useState();
+  let id = null;
   let paramsName = useParams();
+  const [fullItem, setFullItem] = useState([]);
   
   useEffect(() => {
       async function getItem() {
           const result = await axios.get(`/api/collections/${paramsName.collection}/${paramsName.item}`)
           setImageSlide(result.data.imageUrl1)
+          setFullItem(result.data)
+          id = result.data.id
       }
       getItem();
 
@@ -37,26 +39,26 @@ export default function IndividualItemCard({item, user}) {
               <img className="bigImage" src={imageSlide} alt=''></img>
           </div>
           <div>
-              <img className="thumbnailImage" src={item.item.imageUrl1} alt='' onClick={() => handleClick(item.item.imageUrl1)}></img>
-              <img className="thumbnailImage" src={item.item.imageUrl2} alt='' onClick={() => handleClick(item.item.imageUrl2)}></img>
-              <img className="thumbnailImage" src={item.item.imageUrl3} alt='' onClick={() => handleClick(item.item.imageUrl3)}></img>
+              <img className="thumbnailImage" src={fullItem.imageUrl1} alt='' onClick={() => handleClick(fullItem.imageUrl1)}></img>
+              <img className="thumbnailImage" src={fullItem.imageUrl2} alt='' onClick={() => handleClick(fullItem.imageUrl2)}></img>
+              <img className="thumbnailImage" src={fullItem.imageUrl3} alt='' onClick={() => handleClick(fullItem.imageUrl3)}></img>
           </div>
         </div>
         <div className="restOfPage">
 
-          <h2 className="title">{ item.item.title }</h2>
+          <h2 className="title">{ fullItem.title }</h2>
               <div className="imageanddesc">
-                <h4 className="desc">Description: { item.item.description }
+                <h4 className="desc">Description: { fullItem.description }
                 <div>
-                  <Link to={"https://" + item.item.link1} target="_blank" >Shirt</Link>
+                  <Link to={"https://" + fullItem.link1} target="_blank" >Shirt</Link>
                 </div>
                 <div>
-                  <Link to={"https://" + item.item.link2} target="_blank" >Pants</Link>
+                  <Link to={"https://" + fullItem.link2} target="_blank" >Pants</Link>
                 </div>
                 </h4>
               </div>
               
-              <h4>Collection: { item.item.collection }</h4>
+              <h4>Collection: { fullItem.collection }</h4>
         </div>
 
 
@@ -64,7 +66,7 @@ export default function IndividualItemCard({item, user}) {
 
 
 
-        {user && (
+        {/* {user && (
         <>
           <div onClick={() => deleteItemClicked({id})}>
             <Link to={`/collections`}>
@@ -73,7 +75,7 @@ export default function IndividualItemCard({item, user}) {
             
           </div>
         </>
-      )}
+      )} */}
 
               
 

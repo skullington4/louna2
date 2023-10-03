@@ -31,7 +31,7 @@ export default function App() {
               <Route path="/About" element={<About />} />
               <Route path="/Contact" element={<Contact />} />
               <Route path="/Collections/:collection" element={<SingleCollection />} />
-              <Route path="/Collections/:collection/:item" element={<ItemDetails user={user} />} />
+              <Route path="/Collections/:collection/:item" element={<ItemDetails />} />
               
               <Route path="/Add" element={
                   <Add user={user}/>

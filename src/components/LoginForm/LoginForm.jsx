@@ -1,11 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
 import { useSignIn } from "react-auth-kit";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm({setUser}) {
   const [credentials, setCredentials] = useState({ email: "", password: "", image: null });
   const [error, setError] = useState("");
   const signIn = useSignIn();
+  const navigate = useNavigate()
+
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -30,6 +33,7 @@ export default function LoginForm({setUser}) {
       });
       console.log(data);
       setUser(data);
+      navigate("/Collections");
     } catch (error) {
       setError(error.message);
     }
