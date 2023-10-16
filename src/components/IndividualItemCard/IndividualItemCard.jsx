@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-export default function IndividualItemCard({ user }) {  
+export default function IndividualItemCard({user}) {  
 
   const [imageSlide, setImageSlide] = useState();
   let id = null;
@@ -66,7 +66,7 @@ export default function IndividualItemCard({ user }) {
 
 
 
-        {/* {user && (
+        {user && (
         <>
           <div onClick={() => deleteItemClicked({id})}>
             <Link to={`/collections`}>
@@ -75,7 +75,7 @@ export default function IndividualItemCard({ user }) {
             
           </div>
         </>
-      )} */}
+      )}
 
               
 

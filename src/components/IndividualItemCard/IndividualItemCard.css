@@ -1,6 +1,7 @@
 .imageanddesc {
     display: flex;
     flex-direction: row;
+    
 }
 
 .bigImage {
@@ -20,7 +21,14 @@
 .individualItem {
     width: 100vw;
     display: grid;
-    grid-template-columns: 5fr 5fr;
+    grid-template-columns: 3fr 5fr;
     align-items: start;
 }
 
+.restOfPage {
+    width: 40vw;
+}
+
+.allPictures {
+    margin-left: 150px;
+}

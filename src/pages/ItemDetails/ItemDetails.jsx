@@ -10,7 +10,7 @@ import './ItemDetails.css'
 
 
 
-export default function ItemDetails() {
+export default function ItemDetails({user}) {
 
 
     let paramsName = useParams();
@@ -47,7 +47,7 @@ export default function ItemDetails() {
             
           
             <div className="individualItemCard">
-                <IndividualItemCard  item={item} />
+                <IndividualItemCard  user={user} />
             </div>
 
         </>
